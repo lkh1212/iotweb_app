@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mysensor_data">
+        <item>Room Light</item>
+        <item>CCTV</item>
+        <item>Curtain</item>
+        <item>Alarm</item>
+        <item>반려동물 밥 시간</item>
+        <item>온습도/미세먼지</item>
+    </string-array>
+</resources>
