@@ -7,15 +7,22 @@ import android.os.Handler
 import android.os.Looper
 
 class splashActivity : AppCompatActivity() {
+    lateinit var handler:Handler
+    lateinit var threadObj:Thread
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        Handler(Looper.getMainLooper()).postDelayed({
+        handler = Handler(Looper.myLooper()!!)
 
-            val intent= Intent( this,MainActivity::class.java)
-            startActivity(intent)
-
-            finish()
-        },500)
+        threadObj = object :Thread(){
+            override fun run() {
+                super.run()
+                //3초 후에 메인 액티비티로 이동
+                val intent = Intent(applicationContext,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        handler.postDelayed(threadObj,1000)
     }
 }
