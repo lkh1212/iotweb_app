@@ -18,7 +18,7 @@ class splashActivity : AppCompatActivity() {
             override fun run() {
                 super.run()
                 //3초 후에 메인 액티비티로 이동
-                val intent = Intent(applicationContext,MainActivity::class.java)
+                val intent = Intent(applicationContext,LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
