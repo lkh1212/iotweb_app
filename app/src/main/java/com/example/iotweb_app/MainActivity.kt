@@ -6,27 +6,38 @@ import android.util.Base64
 import android.util.Base64.encodeToString
 import android.util.Log
 import android.view.View
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.GridLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.cctv.*
+import kotlinx.android.synthetic.main.pet.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 class MainActivity : AppCompatActivity() {
-    var fragmentlist = ArrayList<Fragment>()
-    var name = arrayOf<String>("Room","CCTV","Curtain","Alarm","Pet","Temp")
+    var datalist = ArrayList<SimpleItem>()
+    var imglist = ArrayList<Int>()
     val server_url = "tcp://192.168.0.24:1883"//broker의 ip와 port
     var mymqtt : MyMqtt? = null
     val sub_topic = "iot/#"
-    var Room=RoomLightFrag()
-    var CCTV=cctv()
-    var Curtain=curtain()
-    var Alarm=alarm()
-    var Pet=pet()
-    var Temp=temp()
+    var Room=SimpleItem("Room")
+    var CCTV=SimpleItem("CCTV")
+    var Curtain=SimpleItem("Curtain")
+    var Alarm=SimpleItem("Alarm")
+    var Pet=SimpleItem("Pet")
+    var Temp=SimpleItem("Temp")
+    private var mWebView // 웹뷰 선언
+            : WebView? = null
+    private var mWebSettings //웹뷰세팅
+            : WebSettings? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,26 +48,23 @@ class MainActivity : AppCompatActivity() {
         //브로커 연결
         mymqtt?.connect(arrayOf<String>(sub_topic))
         //이벤트 연결하기
-        fragmentlist.add(Room)
-        fragmentlist.add(CCTV)
-        fragmentlist.add(Curtain)
-        fragmentlist.add(Alarm)
-        fragmentlist.add(Pet)
-        fragmentlist.add(Temp)
-        val myadapter_pager = object :FragmentStateAdapter(this){
-            override fun getItemCount(): Int {
-                return fragmentlist.size
-            }
+        datalist.add(Room)
+        datalist.add(CCTV)
+        datalist.add(Curtain)
+        datalist.add(Alarm)
+        datalist.add(Pet)
+        datalist.add(Temp)
+        imglist.add(R.drawable.light48)
+        imglist.add(R.drawable.cctv32)
+        imglist.add(R.drawable.curtain48)
+        imglist.add(R.drawable.alarmclock)
+        imglist.add(R.drawable.dog50)
+        imglist.add(R.drawable.temperature48)
+        val adapter = SImpleItemAdapter(this,R.layout.simple_item,datalist,imglist)
 
-            override fun createFragment(position: Int): Fragment {
-                return fragmentlist[position]
-            }
-
-        }
-        tab_pager_iot.adapter = myadapter_pager
-        TabLayoutMediator(tabs_iot,tab_pager_iot){tab,position ->
-            tab.text = name[position]
-        }.attach()
+        val manager = GridLayoutManager(this,2)
+        myrecycler.layoutManager = manager
+        myrecycler.adapter = adapter
 
 
     }
