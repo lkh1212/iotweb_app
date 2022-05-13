@@ -14,9 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Iotweb_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".CurtainActivity">
 
         </activity>
+        <activity android:name=".AlarmActivity"/>
+        <activity android:name=".RoomLightActivity"/>
+        <activity android:name=".TempActivity"/>
+        <activity android:name=".PetActivity"/>
+        <activity android:name=".CctvActivity" />
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".splashActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">
@@ -26,7 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+
+        </activity>
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
     </application>
