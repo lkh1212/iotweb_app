@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.pet.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 class PetActivity : AppCompatActivity(), View.OnClickListener {
-    val server_uri = "tcp://172.30.1.58:1883"
+    val server_uri = "tcp:// :1883"
     var mymqtt : MyMqtt?=null
     val sub_topic = "mypet/waterlevel"
     val sub_topic2 = "mypet/setTime"

@@ -23,6 +23,7 @@
         <activity android:name=".PetActivity"/>
         <activity android:name=".CctvActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".Pet2Activity"/>
         <activity
             android:name=".splashActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">

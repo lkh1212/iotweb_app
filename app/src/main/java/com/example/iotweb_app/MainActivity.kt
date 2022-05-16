@@ -25,7 +25,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 class MainActivity : AppCompatActivity() {
     var datalist = ArrayList<SimpleItem>()
     var imglist = ArrayList<Int>()
-    val server_url = "tcp://192.168.219.102:1883"//broker의 ip와 port
+    val server_url = "tcp:// :1883"//broker의 ip와 port
     var mymqtt : MyMqtt? = null
     val sub_topic = "iot/#"
     var Room=SimpleItem("Light")

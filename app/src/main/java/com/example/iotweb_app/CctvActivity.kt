@@ -30,6 +30,6 @@ class CctvActivity : AppCompatActivity() {
         mWebSettings!!.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN // 컨텐츠 사이즈 맞추기
         mWebSettings!!.cacheMode = WebSettings.LOAD_NO_CACHE // 브라우저 캐시 허용 여부
         mWebSettings!!.domStorageEnabled = true // 로컬저장소 허용 여부
-        mWebView!!.loadUrl("http://192.168.219.102/cctv") // 웹뷰에 표시할 라즈베리파이 주소, 웹뷰 시작
+        mWebView!!.loadUrl("http:// :8000/cctv") // 웹뷰에 표시할 장고 주소, 웹뷰 시작
     }
 }
