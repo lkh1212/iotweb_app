@@ -5,4 +5,5 @@ CurtainActivity.kt
 LoginActivity.kt  
 MainActivity.kt  
 PetActivity.kt  
-# RoomLightAcrivity.kt 의 ip 수정해주세요!!!!
+RoomLightAcrivity.kt 
+# 의 ip 수정해주세요!!!!
