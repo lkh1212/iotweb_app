@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.curtain.*
 
 class CurtainActivity : AppCompatActivity() {
     val sub_topic = "iot/#"
-    val server_uri = "tcp:// :1883" //broker의 ip와 port
+    val server_uri = "tcp://:1883" //broker의 ip와 port
     var mymqtt: MyMqtt? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,5 +26,10 @@ class CurtainActivity : AppCompatActivity() {
             }
             mymqtt?.publish("iot/servo", data)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mymqtt?.disconnect()
     }
 }
