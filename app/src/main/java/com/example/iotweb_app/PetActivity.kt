@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.pet.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 class PetActivity : AppCompatActivity(), View.OnClickListener {
-    val server_uri = "tcp:// :1883"
+    val server_uri = "tcp://:1883"
     var mymqtt : MyMqtt?=null
     val sub_topic = "mypet/waterlevel"
     val sub_topic2 = "mypet/setTime"
@@ -70,5 +70,9 @@ class PetActivity : AppCompatActivity(), View.OnClickListener {
             val alarm2 = alarmset[1]
             feed_time.text = "아침 "+alarm1+"\n"+"점심 "+alarm2
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        mymqtt?.disconnect()
     }
 }
