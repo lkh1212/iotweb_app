@@ -11,16 +11,23 @@ class TempActivity : AppCompatActivity() {
     val sub_topic = "android/dht"
     val server_uri = "tcp://192.168.50.201:1883"
     var mymqtt: MyMqtt? = null
+    var data = listOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.temp)
         mymqtt = MyMqtt(this, server_uri)
         mymqtt?.connect(arrayOf<String>(sub_topic))
         mymqtt?.mysetCallback(::onReceived)
-        val data = readTextFile(filesDir.absolutePath+"/dht.txt").split(",")
-        receivehumid.text = data[1]+"%"
-        receivetemp.text = data[2]+"도"
-        receivedust.text = data[3].replace("]","")
+        val file = File(filesDir.absolutePath+"/dht.txt")
+        if(file.exists()) {
+            data = readTextFile(filesDir.absolutePath + "/dht.txt").split(",")
+            receivehumid.text = data[1]+"%"
+            receivetemp.text = data[2]+"도"
+            receivedust.text = data[3].replace("]","")
+        }else{
+            writeTextFile(filesDir.absolutePath,"/dht.txt","temp")
+        }
+
     }
     fun onReceived(topic:String, message: MqttMessage) {
         val msg = String(message.payload).split(":")
