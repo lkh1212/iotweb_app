@@ -44,6 +44,15 @@ class MainActivity : AppCompatActivity() {
     var Alarm = SimpleItem("Alarm")
     var Pet = SimpleItem("Pet")
     var Temp = SimpleItem("Temp")
+//    val server_url = "tcp://:1883"//broker의 ip와 port
+//    var mymqtt : MyMqtt? = null
+//    val sub_topic = "iot/#"
+    var Room=SimpleItem("Light")
+    var CCTV=SimpleItem("CCTV")
+    var Curtain=SimpleItem("Curtain")
+    var Alarm=SimpleItem("Alarm")
+    var Pet=SimpleItem("Pet")
+    var Temp=SimpleItem("Temp")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
