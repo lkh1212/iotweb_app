@@ -2,67 +2,87 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="내 주변환경 체크하기"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - " />
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/temperature48"
-            android:layout_weight="1"
-            />
+            android:layout_width="158dp"
+            android:layout_height="160dp"
+
+            android:src="@drawable/temperature48" />
+
         <TextView
             android:id="@+id/receivetemp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="온도 : 0도"
+            android:layout_width="182dp"
+            android:layout_height="160dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_weight="1"/>
-
+            android:text="온도 : 0도"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_marginLeft="20dp">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/humidity64"
-            android:layout_weight="1"
-            />
+            android:layout_width="156dp"
+            android:layout_height="140dp"
+            android:src="@drawable/humidity64" />
+
         <TextView
             android:id="@+id/receivehumid"
-            android:layout_width="match_parent"
+            android:layout_width="21dp"
             android:layout_height="match_parent"
-            android:text="습도 : 0%"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_weight="1"/>
-
+            android:text="습도 : 0 %"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp">
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/dust64"
-            android:layout_weight="1"
-            />
+            android:layout_width="146dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/dust64" />
+
         <TextView
             android:id="@+id/receivedust"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="미세먼지 농도 : 0"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_weight="1"/>
+            android:text="미세먼지 농도 : 0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </LinearLayout>
 </LinearLayout>

@@ -87,4 +87,8 @@ class MyMqtt(context: Context, uri:String) {
 
         })
     }
+    fun disconnect(){
+        Log.d("this","client disconnected");
+        mqttClient.disconnect()
+    }
 }
