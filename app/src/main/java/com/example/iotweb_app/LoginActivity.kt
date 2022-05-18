@@ -40,6 +40,8 @@ class LoginActivity : AppCompatActivity() {
                 jsonobj.put("user_id",id.text)
                 jsonobj.put("user_pwd",pwd.text)
                 var url = "http://192.168.0.84:8000/login"
+                var url = "http://192.168.50.201:8000/login"
+                var url = "http://192.168.219.102:8000/login"
 
                 var client = OkHttpClient()
                 val jsondata = jsonobj.toString()
