@@ -9,7 +9,7 @@ import java.io.*
 
 class TempActivity : AppCompatActivity() {
     val sub_topic = "android/dht"
-    val server_uri = "tcp://192.168.50.201:1883"
+    val server_uri = "tcp://192.168.0.84:1883"
     var mymqtt: MyMqtt? = null
     var data = listOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {

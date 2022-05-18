@@ -35,9 +35,10 @@ class MainActivity : AppCompatActivity() {
     var datalist = ArrayList<SimpleItem>()
     var imglist = ArrayList<Int>()
 
-    val server_url = "tcp://192.168.50.201:1883"//broker의 ip와 port
+    val server_url = "tcp://192.168.0.84:1883"//broker의 ip와 port
     var mymqtt : MyMqtt? = null
     val sub_topic = "android/rfid"
+    val sub_topic2 = "android/pir"
     var Room = SimpleItem("Light")
     var CCTV = SimpleItem("CCTV")
     var Curtain = SimpleItem("Curtain")
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         myrecycler.adapter = adapter
 
         mymqtt = MyMqtt(this, server_url)
-        mymqtt?.connect(arrayOf<String>(sub_topic))
+        mymqtt?.connect(arrayOf<String>(sub_topic, sub_topic2))
         mymqtt?.mysetCallback(::onReceived)
     }
 
@@ -106,7 +107,10 @@ class MainActivity : AppCompatActivity() {
         builder.setNumber(100)
         builder.setAutoCancel(true)
         builder.setContentTitle("출입알림")
-        builder.setContentText(msg+"님이 출입하였습니다.")
+        if(topic=="android/rfid")
+            builder.setContentText(msg+"님이 출입하였습니다.")
+        else(topic=="android/pir")
+            builder.setContentText("현관 출입 발생!! 112에 신고하세요!!")
 
         var notication = builder.build()
 
